@@ -1,0 +1,27 @@
+zuul:
+
+  routes:
+
+    auth:
+
+      path: /account-service/**
+
+      serviceId: ACCOUNT-SERVICE
+
+      stripPrefix: false
+      
+# Discovery Server Access
+
+eureka:
+
+  client:
+
+    registerWithEureka: false
+
+    serviceUrl:
+
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+
+  port: 8080   # HTTP (Tomcat) port
