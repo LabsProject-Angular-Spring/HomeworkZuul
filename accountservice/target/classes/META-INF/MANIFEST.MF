@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: accountservice
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: teamzz111
+Built-By: JSJG
 Implementation-Vendor-Id: com.equinix.ioa.wb
-Build-Jdk: 1.8.0_231
+Build-Jdk: 1.8.0_221
 Implementation-URL: http://projects.spring.io/spring-boot/accountservi
  ce/
 Created-By: Maven Integration for Eclipse
