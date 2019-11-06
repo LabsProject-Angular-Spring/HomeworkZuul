@@ -7,12 +7,14 @@ public class User {
 	
 	private String firstname;
 	
+	private String token;
+	
 
 	public User(int id, String username, String firstname) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.firstname = firstname;
+		this.firstname = firstname;		
 	}
 
 	public int getId() {
@@ -37,6 +39,13 @@ public class User {
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+	}
+	public String getToken() {
+		return firstname;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 }

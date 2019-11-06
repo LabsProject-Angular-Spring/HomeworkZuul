@@ -1,0 +1,13 @@
+server:
+  port: 9094
+
+spring:
+  # Spring Cloud Config Server Repository
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LabsProject-Angular-Spring/ZuulConfigRepository
+
+  application:
+    name: AUTHENTICATION-SERVICE
