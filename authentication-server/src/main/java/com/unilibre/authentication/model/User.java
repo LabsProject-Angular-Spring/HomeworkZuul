@@ -41,7 +41,7 @@ public class User {
 		this.firstname = firstname;
 	}
 	public String getToken() {
-		return firstname;
+		return token;
 	}
 
 	public void setToken(String token) {

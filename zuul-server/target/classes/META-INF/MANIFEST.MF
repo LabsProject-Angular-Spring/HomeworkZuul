@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: Zuul server
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: santiago.jara
+Built-By: teamzz111
 Implementation-Vendor-Id: org.exampledriven
 Build-Jdk: 1.8.0_231
 Created-By: Maven Integration for Eclipse

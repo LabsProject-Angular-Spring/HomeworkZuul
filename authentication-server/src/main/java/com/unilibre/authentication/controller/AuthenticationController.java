@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -18,19 +21,25 @@ import com.unilibre.authentication.model.User;
 
 @RestController
 public class AuthenticationController {
+	
 	@Autowired
 	private AccountServiceClientFeign accountServiceClientFeign; 
 	
-	@RequestMapping(value = "/authentication-service", method = RequestMethod.POST, produces ="application/json")
-	public User login(@RequestParam("user") String username, @RequestParam("password") String password ) {		
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("user", username);
-	    map.put("password", password);
-		User user = accountServiceClientFeign.GetUser(map);		
+	@RequestMapping(value = "/authentication-service", 
+			method = RequestMethod.POST, 
+			consumes = {"application/json"},
+			produces ="application/json")
+	public com.unilibre.authentication.model.User login(@RequestBody Map<String, Object> payload) {		
+
+		com.unilibre.authentication.model.User user = accountServiceClientFeign.login(payload);	
+	
 		if(user.getId()!=0) {
-			getJWTToken(username);
+			user.setToken(getJWTToken((String)payload.get("user")));
+			return user;
+		} else {
+			return null;
 		}
-		return user;
+		
 	}
 	private String getJWTToken(String username) {
 		String secretKey = "SecretKey";
@@ -44,6 +53,6 @@ public class AuthenticationController {
 				.signWith(SignatureAlgorithm.HS512,
 						secretKey.getBytes()).compact();
 
-		return "Token " + token;
+		return token;
 	}
 }

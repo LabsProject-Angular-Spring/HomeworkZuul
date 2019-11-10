@@ -1,5 +1,8 @@
 package com.unilibre.account.controller;
 
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +19,11 @@ public class AccountController {
 		user = new User(100, "alargo@gmail.com", "Test");
 	}	
 
-	@RequestMapping(value = "/account-service", method = RequestMethod.POST, produces ="application/json")
-	public User login(@RequestParam("user") String username, @RequestParam("password") String password ) {
-		if(username.equals("alargo") && password.equals("123")) {
+	@RequestMapping(value = "/account-service", method = RequestMethod.POST, 
+			consumes = {"application/json"},
+			produces ="application/json")
+	public User login(@RequestBody Map<String, Object> payload  ) {
+		if(payload.get("user").equals("alargo") && payload.get("password").equals("123")) {
 			return user;		
 		} else {
 			return new User(0, "", "");
