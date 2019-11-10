@@ -1,10 +1,10 @@
 zuul:
   routes:
+
     auth:
-      path: /account-service/**
-      serviceId: ACCOUNT-SERVICE
+      path: /authentication-service/**
+      serviceId: AUTHENTICATION-SERVICE
       stripPrefix: false
-      
 # Discovery Server Access
 
 eureka:

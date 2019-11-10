@@ -33,7 +33,7 @@ public class AuthenticationController {
 
 		com.unilibre.authentication.model.User user = accountServiceClientFeign.login(payload);	
 	
-		if(user.getId()!=0) {
+		if(user.getId()!=-1) {
 			user.setToken(getJWTToken((String)payload.get("user")));
 			return user;
 		} else {

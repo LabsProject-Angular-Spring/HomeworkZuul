@@ -16,7 +16,7 @@ public class AccountController {
 	User user = null;
 	
 	public AccountController() {
-		user = new User(100, "alargo@gmail.com", "Test");
+		user = new User(1, "alargo@gmail.com", "Test");
 	}	
 
 	@RequestMapping(value = "/account-service", method = RequestMethod.POST, 
@@ -26,7 +26,7 @@ public class AccountController {
 		if(payload.get("user").equals("alargo") && payload.get("password").equals("123")) {
 			return user;		
 		} else {
-			return new User(0, "", "");
+			return new User(-1, "", "");
 		}
 	
 	}
